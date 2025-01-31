@@ -198,11 +198,8 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
                 href='https://chinese-fonts-cdn.deno.dev/packages/jyhpws/dist/%E6%9E%81%E5%BD%B1%E6%AF%81%E7%89%87%E6%96%87%E5%AE%8B/result.css'
               />
               <style>
-                :root {
-                  --fontStack-monospace: "Monaspace Xenon", "极影毁片文宋 Medium", "Courier New", Courier, ui-monospace, monospace;
-                }
                 body, .markdown-body {
-                  font-family: var(--fontStack-monospace);
+                  font-family: "Monaspace Xenon", "极影毁片文宋 Medium", var(--fontStack-monospace), monospace;
                 }
               </style>
             - | # 填满页面
@@ -283,7 +280,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
                   }
                 </style>
                 <script
-                  src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js
+                  src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"
                   async="async"
                   defer="defer"
                   onload='
@@ -362,9 +359,9 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
             />
             <style>
               .reveal {
-                --r-main-font: var(--fontStack-monospace);
-                --r-heading-font: var(--fontStack-monospace);
-                --r-code-font: var(--fontStack-monospace);
+                --r-main-font: "Monaspace Xenon", "极影毁片文宋 Medium", var(--fontStack-monospace), monospace;
+                --r-heading-font: var(--r-main-font);
+                --r-code-font: var(--r-main-font);
                 --r-main-color: var(--fgColor-default, var(--color-fg-default));
                 --r-heading-color: var(--fgColor-default, var(--color-fg-default));
                 --r-link-color: var(--fgColor-accent, var(--color-accent-fg));
