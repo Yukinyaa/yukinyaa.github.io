@@ -74,7 +74,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
                 ></script>
               </div>
               <div>
-                (C) 2017-2024 wu-kan
+                (C) 2017-2025 wu-kan
               </div>
             jekyll-toc: # <https://github.com/allejo/jekyll-toc>
               enable: true
@@ -108,7 +108,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
                   })'
                   ></script>
                 </form>
-          append_to_head: # 通过内嵌html的方式引入并定制插件，删改前确定知道自己在做什么。定制插件的方式可以参考这篇文章 <https://wu-kan.cn/_posts/2019-01-18-基于Jekyll搭建个人博客/>
+          append_to_head: # 通过内嵌html的方式引入并定制插件，删改前确定知道自己在做什么。定制插件的方式可以参考这篇文章 <https://wu-kan.cn/2019/01/18/基于Jekyll搭建个人博客/>
             - | # 页面加载动画，可在 <https://css-loaders.com/> 挑选
               <style>
                 .loader {
@@ -134,8 +134,8 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
                   100% {clip-path: inset(0 -30px 0 0)}
                 }
                 #wrap-loader {
-                  width: 100%;
-                  height: 100%;
+                  width: 100vw;
+                  height: 100vh;
                   position: fixed;
                   top: 0;
                   left: 0;
@@ -164,35 +164,24 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
               <script>
                 document.addEventListener("DOMContentLoaded", (event) => {
                   let x = document.getElementById("wrap-loader");
-                  x.classList.add("fast");
-                  x.classList.add("anim-fade-out");
+                  x.classList.add("fast", "anim-fade-out");
                   setTimeout('document.getElementById("wrap-loader").remove()', 300);
               });
               </script>
             - | # 一些页面优化标签，看不懂可跳过
               <meta
-                name="viewport"
-                content="width=device-width,minimum-scale=1,initial-scale=1"
-              />
-              <meta
                 http-equiv="content-type"
                 content="text/html; charset=utf-8"
+              />
+              <meta
+                name="viewport"
+                content="width=device-width,minimum-scale=1,initial-scale=1"
               />
               <link
                 rel="alternate"
                 href="/feed.xml"
                 title="RSS"
                 type="application/rss+xml"
-              />
-            - | # 网站小图标，可换成你自己的图片，改href中的部分即可
-              <link
-                rel="apple-touch-icon-precomposed"
-                href="https://gravatar.loli.net/avatar/289efba375d63424de3c49569c446744?s=320"
-              />
-              <link
-                rel="shortcut
-                icon"
-                href="https://gravatar.loli.net/avatar/289efba375d63424de3c49569c446744?s=32"
               />
             - | # 来自primer/css的页面样式，不要改
               <link
@@ -215,7 +204,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
               />
               <style>
                 body, .markdown-body {
-                  font-family: "Monaspace Xenon", "极影毁片文宋 Medium", var(--fontStack-monospace), monospace;
+                  font-family: "Monaspace Xenon", "极影毁片文宋 Medium", var(--fontStack-monospace, monospace);
                 }
               </style>
             - | # 填满页面
@@ -228,7 +217,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
           title: # 为每个页面自动生成一个 H1 title
             enable: true
           prepend:
-            - | # 首行缩进2字符
+            - | # 首行缩进2字符，图片相应调整
               <style>
                 .markdown-body p {
                   text-indent: 2em;
@@ -253,7 +242,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
                 | # 对KaTeX过长公式渲染超出页面的修正，感谢[@AmachiInori](https://github.com/wu-kan/wu-kan.github.io/issues/13)
                 <link
                   rel="stylesheet"
-                  href="https://cdn.jsdelivr.net/npm/katex@0.16.19/dist/katex.min.css"
+                  href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
                 />
                 <style>
                   .katex-display>.katex {
@@ -261,7 +250,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
                   }
                 </style>
                 <script
-                  src="https://cdn.jsdelivr.net/combine/npm/katex@0.16.19/dist/katex.min.js,npm/katex@0.16.19/dist/contrib/auto-render.min.js"
+                  src="https://cdn.jsdelivr.net/combine/npm/katex@0.16.21/dist/katex.min.js,npm/katex@0.16.21/dist/contrib/auto-render.min.js"
                   async="async"
                   onload='renderMathInElement(document.body, { delimiters: [{left: "$$", right: "$$", display: true}, { left: "$", right: "$", display: false }, {left: "\\(", right: "\\)", display: false}, {left: "\\[", right: "\\]", display: true}]})'
                 ></script>
@@ -275,7 +264,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
                   }
                 </style>
                 <script
-                  src="https://cdn.jsdelivr.net/combine/npm/vega@5.30.0,npm/vega-lite@5.23.0,npm/vega-embed@6.29.0"
+                  src="https://cdn.jsdelivr.net/combine/npm/vega@5.31.0,npm/vega-lite@5.23.0,npm/vega-embed@6.29.0"
                   async="async"
                   onload='
                     for(let x of document.getElementsByClassName("language-vega-lite"))
@@ -326,8 +315,8 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
                   sakana.style.right = "0";
                   sakana.style.zIndex = "1";
                   sakana.style.position = "fixed";
-                  document.body.insertAdjacentElement("beforeend", sakana);
                   new SakanaWidget({ character: 'mizuno' }).mount(sakana);
+                  document.body.insertAdjacentElement("beforeend", sakana);
                 }
                 </script>
                 <script
@@ -358,7 +347,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
             </a>
             （除特别声明或转载文章外）
             <br/>
-            <a target="_blank" href="/donate/">如果这篇博客帮助到你，可以请我喝一杯咖啡~</a>
+            <a target="_blank" href="/donate/">如果这篇文章帮助到你，可以请我喝一杯咖啡~</a>
           related_posts:
             enable: true
         home: # 展示页的配置可跳过，详见<https://revealjs.com/>
@@ -375,11 +364,11 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
             />
             <style>
               .reveal {
-                --r-main-font: "Monaspace Xenon", "极影毁片文宋 Medium", var(--fontStack-monospace), monospace;
+                --r-code-font: "Monaspace Xenon", "极影毁片文宋 Medium", var(--fontStack-monospace, monospace);
+                --r-main-font: var(--r-code-font);
                 --r-heading-font: var(--r-main-font);
-                --r-code-font: var(--r-main-font);
                 --r-main-color: var(--fgColor-default, var(--color-fg-default));
-                --r-heading-color: var(--fgColor-default, var(--color-fg-default));
+                --r-heading-color: var(--r-main-color);
                 --r-link-color: var(--fgColor-accent, var(--color-accent-fg));
                 --r-background-color: var(--bgColor-default, var(--color-canvas-default));
               }
