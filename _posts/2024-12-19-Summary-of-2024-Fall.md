@@ -52,11 +52,17 @@ layout: home
 
 <!-- .slide -->
 
-## Keep Coding
+## Coding & Reading
 
 <!-- .slide vertical=true -->
 
 ![coding](https://Mizuno-Ai.wu-kan.cn/assets/image/2024/12/19/4.png)
+
+<!-- .slide vertical=true -->
+
+- ~> 20 papers 🥲, needs more in the new semester
+
+![reading](https://Mizuno-Ai.wu-kan.cn/assets/image/2024/12/19/5.wep)
 
 <!-- .slide -->
 
