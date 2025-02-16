@@ -10,6 +10,10 @@ layout: home
 
 <!-- .slide vertical=true -->
 
+![fanjinzhongju](https://Mizuno-Ai.wu-kan.cn/assets/image/2024/12/19/6.webp)
+
+<!-- .slide vertical=true -->
+
 - 示意敌人已不见踪影
 
 ![xianweiz_angry](https://Mizuno-Ai.wu-kan.cn/assets/image/2024/12/19/0.png)
