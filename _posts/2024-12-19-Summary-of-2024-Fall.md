@@ -20,7 +20,7 @@ layout: home
 
 <!-- .slide vertical=true -->
 
-![yasuo](https://Mizuno-Ai.wu-kan.cn/assets/image/2024/12/19/1.jpg)
+![hasaki](https://Mizuno-Ai.wu-kan.cn/assets/image/2024/12/19/1.jpg)
 
 <!-- .slide vertical=true -->
 
@@ -28,7 +28,7 @@ layout: home
   - 带入 Reviewer 的视角去阅读论文
 - 每一处想偷懒的地方都偷不了懒
   - 从图片的间距到每个引用的细节都不能放过
-- **一作要干 95% 的活**
+- **一作要干 95% 的活**，科研是单枪匹马不是团队合作
   - 完整经历一次一作使人成长
 
 <!-- .slide -->
@@ -72,8 +72,9 @@ layout: home
 
 ## Balanced Life
 
-- 保持健身，体重 55kg -> 58kg
 - 成为一围肥牛火锅店粉丝，多次成为幸运顾客
+- 保持健身，体重 55kg -> 58kg
+- 计划下学期开始练拳击！
 
 <!-- .slide vertical=true -->
 
