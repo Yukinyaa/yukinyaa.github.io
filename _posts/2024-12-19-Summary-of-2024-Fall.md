@@ -38,6 +38,7 @@ layout: home
 <!-- .slide vertical=true -->
 
 - 两个 weak accept，两个 weak reject
+  - 有一个审稿人特别凶，指出了六七点（写作上的）不足
 
 ![rating](https://Mizuno-Ai.wu-kan.cn/assets/image/2024/12/19/2.jpg)
 
@@ -55,6 +56,25 @@ layout: home
   - 您说的对，我们会带着谦虚的态度仔细修改
 
 <!-- .slide -->
+
+## Rebuttal to DAC'25
+
+<!-- .slide vertical=true -->
+
+- 总体评价比 CGO 柔和很多
+  - 能 get 到 interesting 之处
+- 乐涩主办方
+
+<!-- .slide vertical=true -->
+
+![interesting1](https://Mizuno-Ai.wu-kan.cn/assets/image/2024/12/19/7.webp)
+
+<!-- .slide vertical=true -->
+
+![interesting2](https://Mizuno-Ai.wu-kan.cn/assets/image/2024/12/19/8.webp)
+
+<!-- .slide -->
+
 
 ## Coding & Reading
 
@@ -78,4 +98,4 @@ layout: home
 
 <!-- .slide vertical=true -->
 
-
+## End
