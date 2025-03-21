@@ -12,7 +12,7 @@ PATH=$HOME/triton-train:$PATH python3 relu.py
 
 以下是首次上手编写的 `relu` 函数，作为一个最小化的上手例子。
 
-```python3
+```python
 # spack load py-triton@2.1.0 py-torch@2.4.1+cuda py-matplotlib@3.7.5 py-pandas@1.5.3
 # cp /usr/sbin/ldconfig .
 # PATH=$HOME/triton-train:$PATH python3 relu.py
