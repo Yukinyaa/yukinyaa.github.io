@@ -13,8 +13,6 @@ tags: 学习笔记与作业
 - cuda@12.6.2
 - py-triton@2.1.0
 - py-torch@2.4.1+cuda
-- py-matplotlib@3.7.5
-- py-pandas@1.5.3
 
 配置环境的时候遇到一个问题，运行时需要用的 `ldconfig` 在 `/usr/sbin/` 目录下，很奇怪为啥要这么搞。我的解决方式是直接 `cp` 到当前工作目录下，并在运行时加入 `PATH`。
 
