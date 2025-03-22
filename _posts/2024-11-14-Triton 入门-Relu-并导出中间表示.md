@@ -1,5 +1,5 @@
 ---
-title: Triton简易入门-Relu
+title: Triton 入门-Relu-并导出中间表示
 tags: 学习笔记与作业
 ---
 
@@ -28,7 +28,7 @@ PATH=$HOME/triton-train:$PATH python3 relu.py
 以下是首次上手编写的 `relu` 函数，作为一个最小化的上手例子。同时导出运行时的层层下降的中间表示 `['ast', 'ttir', 'ttgir', 'llir', 'ptx', 'cubin']`，用于观察 triton 生成算子的具体逻辑。
 
 ```python
-# spack load py-triton@2.1.0 py-torch@2.4.1+cuda py-matplotlib@3.7.5 py-pandas@1.5.3
+# spack load py-triton@2.1.0 py-torch@2.4.1+cuda
 # cp /usr/sbin/ldconfig .
 # PATH=$HOME/triton-train:$PATH python3 relu.py
 import triton
@@ -69,29 +69,6 @@ def test(size):
     print(f"Maxdiff is " f"{torch.max(torch.abs(y_torch - y_triton))}")
 
 
-@triton.testing.perf_report(
-    triton.testing.Benchmark(
-        x_names=["size"],
-        x_vals=[2**i for i in range(12, 28)],
-        x_log=True,
-        line_arg="provider",
-        line_vals=["triton", "torch"],
-        line_names=["Triton", "Torch"],
-        plot_name="relu-performance",
-        args={},
-    )
-)
-def benchmark(size, provider):
-    DEVICE = "cuda"  # triton.runtime.driver.active.get_active_torch_device()
-    x = torch.rand(size, device=DEVICE, dtype=torch.float32)
-    x -= 0.5
-    if provider == "torch":
-        method = lambda: torch.relu(x)
-    if provider == "triton":
-        method = lambda: triton_relu(x)
-    return triton.testing.do_bench(method)  # ms
-
-
 def get_asm():
     DEVICE = "cuda"  # triton.runtime.driver.active.get_active_torch_device()
     size = 2**20
@@ -108,7 +85,6 @@ def get_asm():
 if __name__ == "__main__":
     torch.manual_seed(3407)
     test(2**20)
-    benchmark.run(print_data=True, show_plots=False, save_path=".")
     get_asm()
 ```
 
@@ -118,29 +94,7 @@ if __name__ == "__main__":
 tensor([0.3659, 0.0000, 0.0000,  ..., 0.0000, 0.3017, 0.0000], device='cuda:0')
 tensor([0.3659, 0.0000, 0.0000,  ..., 0.0000, 0.3017, 0.0000], device='cuda:0')
 Maxdiff is 0.0
-relu-performance:
-           size    Triton     Torch
-0        4096.0  0.029745  0.006186
-1        8192.0  0.006276  0.005931
-2       16384.0  0.006349  0.006032
-3       32768.0  0.006436  0.006093
-4       65536.0  0.006222  0.006691
-5      131072.0  0.006567  0.007026
-6      262144.0  0.007626  0.008013
-7      524288.0  0.009485  0.009593
-8     1048576.0  0.012198  0.011711
-9     2097152.0  0.018028  0.017868
-10    4194304.0  0.030379  0.030201
-11    8388608.0  0.056574  0.056206
-12   16777216.0  0.104953  0.104733
-13   33554432.0  0.201216  0.201807
-14   67108864.0  0.394154  0.394326
-15  134217728.0  0.777879  0.781234
 ```
-
-性能如图，貌似 size 较小时 triton 不如 torch，可考虑调小 `BLOCK_SIZE`。
-
-![relu-performance](https://Mizuno-Ai.wu-kan.cn/assets/image/2024/11/14/relu-performance.png)
 
 ## `relu.ast`
 
