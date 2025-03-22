@@ -47,7 +47,7 @@ def kernel_softmax(
     tl.store(y_ptr + idx, x, mask=idx < n_cols)
 
 
-def triton_softmax_dim0(x):
+def triton_softmax_dim1(x):
     n_rows, n_cols = x.shape
     y = torch.empty_like(x)
     kernel_softmax[(n_rows,)](
@@ -80,7 +80,7 @@ def benchmark(n_col, provider):
     if provider == "torch":
         method = lambda: torch.softmax(x, dim=1)
     if provider == "triton":
-        method = lambda: triton_softmax_dim0(x)
+        method = lambda: triton_softmax_dim1(x)
     return triton.testing.do_bench(method)  # ms
 
 
@@ -89,7 +89,7 @@ if __name__ == "__main__":
     DEVICE = "cuda"  # triton.runtime.driver.active.get_active_torch_device()
     x = torch.rand([2, 4], device=DEVICE)
     y_torch = torch.softmax(x, dim=1)
-    y_triton = triton_softmax_dim0(x)
+    y_triton = triton_softmax_dim1(x)
     print(y_torch)
     print(y_triton)
     print(f"Maxdiff is " f"{torch.max(torch.abs(y_torch - y_triton))}")
