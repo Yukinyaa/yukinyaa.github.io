@@ -18,9 +18,11 @@ tags: 学习笔记与作业
 
 ## 源代码 `softmax.py`
 
+指定了 `num_warps=32`，实测不加这个的时候在 `n_col` 特别大的时候（`ncol=65536`）性能会大幅下降（`0.63ms->2.41ms`）。
+
 ```python
 # spack load py-triton@2.1.0 py-torch@2.4.1+cuda py-matplotlib@3.7.5 py-pandas@1.5.3
-# PATH=/usr/sbin:$PATH python3 softmax.py
+# PATH=/usr/sbin:$PATH python3 relu.py
 import triton
 import triton.language as tl
 import torch
@@ -55,6 +57,7 @@ def triton_softmax_dim0(x):
         y.stride(0),
         n_cols,
         BLOCK_SIZE=triton.next_power_of_2(n_cols),
+        num_warps=32,
     )
     return y
 
@@ -95,7 +98,7 @@ if __name__ == "__main__":
 
 ## 程序输出
 
-如图，可发现当 `n_col < 32768` 时 triton 的算子融合方式性能较好，否则性能差。推测过多的寄存器占用影响了 occupancy。`n_col > 131072` 时直接无法启动。
+如图，可发现当 `n_col < 131072` 时 triton 的算子融合方式性能较好，否则性能差。推测过多的寄存器/SMEM占用影响了 occupancy。`n_col > 131072` 时直接无法启动。
 
 ```plain_text
 tensor([[0.3550, 0.2351, 0.1792, 0.2307],
@@ -105,16 +108,16 @@ tensor([[0.3550, 0.2351, 0.1792, 0.2307],
 Maxdiff is 1.4901161193847656e-08
 softmax-time:
       n_col    Triton     Torch
-0     256.0  0.008607  0.009026
-1     512.0  0.010185  0.011388
-2    1024.0  0.012233  0.015406
-3    2048.0  0.017749  0.024292
-4    4096.0  0.031119  0.035337
-5    8192.0  0.057558  0.062583
-6   16384.0  0.108629  0.120327
-7   32768.0  0.249226  0.363520
-8   65536.0  2.410658  0.794841
-9  131072.0  4.910511  1.567474
+0     256.0  0.016137  0.008521
+1     512.0  0.016823  0.011331
+2    1024.0  0.017489  0.015334
+3    2048.0  0.021186  0.024648
+4    4096.0  0.031589  0.034773
+5    8192.0  0.056796  0.062525
+6   16384.0  0.106099  0.120396
+7   32768.0  0.208282  0.363455
+8   65536.0  0.637752  0.794378
+9  131072.0  3.938859  1.567888
 ```
 
 ![softmax-time](https://Mizuno-Ai.wu-kan.cn/assets/image/2024/11/21/softmax-time.png)
