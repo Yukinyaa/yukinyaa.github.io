@@ -128,7 +128,7 @@ done
 
 ## 运行结果 `run_osu.log`
 
-```shell
+````plain_text
       8  Intel(R) Xeon(R) Platinum 8260 CPU @ 2.40GHz
 [+] /data00/home/wukan.i/spack-0.16.1/opt/spack/linux-debian9-cascadelake/intel-19.0.5.281/libsigsegv-2.12-r3trcwozyk2v3lalhsjmncp26c2koqzn
 [+] /data00/home/wukan.i/spack-0.16.1/opt/spack/linux-debian9-cascadelake/intel-19.0.5.281/pkgconf-1.7.3-pzvmn24duawmwpx4rf2zcdq3dzvga54v

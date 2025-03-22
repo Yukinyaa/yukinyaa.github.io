@@ -29,25 +29,25 @@ You should output the lexicographically N-th string with the same letters(2\*`S`
 
 ### Sample Input 1
 
-```shell
+````plain_text
 1
 ```
 
 ### Sample Output 1
 
-```shell
+````plain_text
 SSUY
 ```
 
 ### Sample Input 2
 
-```shell
+````plain_text
 5
 ```
 
 ### Sample Output 2
 
-```shell
+````plain_text
 SYSU
 ```
 
@@ -101,13 +101,13 @@ The first line of input contains an integer donating the answer.
 
 ### Sample Input
 
-```shell
+````plain_text
 5
 ```
 
 ### Sample Output
 
-```shell
+````plain_text
 1
 ```
 
@@ -164,7 +164,7 @@ For each case output one integer per line, the number of tourist(s) cannot get o
 
 ### Sample Input
 
-```shell
+````plain_text
 1
 4
 O.##
@@ -175,7 +175,7 @@ O.##
 
 ### Sample Output
 
-```shell
+````plain_text
 2
 ```
 
@@ -285,7 +285,7 @@ If you still have any questions, you can refer to the sample output.
 
 ### Sample Input 1
 
-```shell
+````plain_text
 2
 10 5010
 4980 9980
@@ -293,13 +293,13 @@ If you still have any questions, you can refer to the sample output.
 
 ### Sample Output 1
 
-```shell
+````plain_text
 20
 ```
 
 ### Sample Input 2
 
-```shell
+````plain_text
 4
 0 4000
 3000 5000
@@ -309,7 +309,7 @@ If you still have any questions, you can refer to the sample output.
 
 ### Sample Output 2
 
-```shell
+````plain_text
 0.5
 ```
 
@@ -426,7 +426,7 @@ For each case, output one integer, the minimum total weighted completion time of
 
 ### Sample Input
 
-```shell
+````plain_text
 1
 5 7
 1 2 3 4 5
@@ -440,7 +440,7 @@ For each case, output one integer, the minimum total weighted completion time of
 
 ### Sample Output
 
-```shell
+````plain_text
 11
 ```
 
@@ -465,7 +465,7 @@ For each case, output one integer, the minimum total weighted completion time of
 
 如果你对这个建图方式仍然有疑问，可以看一下这个简单的样例。
 
-```shell
+````plain_text
 1
 1 2
 7
