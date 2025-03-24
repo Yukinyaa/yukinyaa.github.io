@@ -26,7 +26,7 @@ tags: 学习笔记与作业
 
 顺带一提，我认为区间规约操作 `tl.max` `tl.sum` 开销很大，因此把他们都写在循环外面。
 
-尤其值得注意的是 115 行处处理的 `nan` 问题，真的 debug 了很久。
+尤其值得注意的是 114 行处处理的 `nan` 问题，真的 debug 了很久。
 
 对 `num_warps=32`、`BLOCK_SIZE` 进行了一些手动调优。
 
@@ -61,7 +61,7 @@ def kernel_softmax_fuse(
 def triton_softmax_dim1_fuse(x):
     n_rows, n_cols = x.shape
     y = torch.empty_like(x)
-    kernel_softmax_fuse[(n_rows,)](
+    kernel_softmax_fuse[[n_rows]](
         x,
         x.stride(0),
         y,
@@ -113,7 +113,7 @@ def kernel_softmax_tile(
 def triton_softmax_dim1_tile(x):
     n_rows, n_cols = x.shape
     y = torch.empty_like(x)
-    kernel_softmax_tile[(n_rows,)](
+    kernel_softmax_tile[[n_rows]](
         x,
         x.stride(0),
         y,
@@ -168,7 +168,7 @@ def kernel_softmax_online(
 def triton_softmax_dim1_online(x):
     n_rows, n_cols = x.shape
     y = torch.empty_like(x)
-    kernel_softmax_online[(n_rows,)](
+    kernel_softmax_online[[n_rows]](
         x,
         x.stride(0),
         y,
@@ -178,6 +178,21 @@ def triton_softmax_dim1_online(x):
         num_warps=32,
     )
     return y
+
+
+def test():
+    DEVICE = "cuda"  # triton.runtime.driver.active.get_active_torch_device()
+    x = torch.rand([2**10, 2**15], device=DEVICE)
+    mp = {
+        "torch": lambda: torch.softmax(x, dim=1),
+        "triton_fuse": lambda: triton_softmax_dim1_fuse(x),
+        "triton_tile": lambda: triton_softmax_dim1_tile(x),
+        "triton_online": lambda: triton_softmax_dim1_online(x),
+    }
+    y_torch = mp["torch"]()
+    for k, v in mp.items():
+        y_triton = v()
+        print("{}: Maxdiff is {}".format(k, torch.max(torch.abs(y_torch - y_triton))))
 
 
 @triton.testing.perf_report(
@@ -205,18 +220,7 @@ def benchmark(n_col, provider):
 
 if __name__ == "__main__":
     torch.manual_seed(3407)
-    DEVICE = "cuda"  # triton.runtime.driver.active.get_active_torch_device()
-    x = torch.rand([2**10, 2**15], device=DEVICE)
-    mp = {
-        "torch": lambda: torch.softmax(x, dim=1),
-        "triton_fuse": lambda: triton_softmax_dim1_fuse(x),
-        "triton_tile": lambda: triton_softmax_dim1_tile(x),
-        "triton_online": lambda: triton_softmax_dim1_online(x),
-    }
-    y_torch = mp["torch"]()
-    for k, v in mp.items():
-        y_triton = v()
-        print(k + ": " + f"Maxdiff is " f"{torch.max(torch.abs(y_torch - y_triton))}")
+    test()
     benchmark.run(print_data=True, show_plots=False, save_path=".")
 ```
 

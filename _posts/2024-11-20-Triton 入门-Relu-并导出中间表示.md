@@ -45,7 +45,7 @@ def triton_relu(x: torch.Tensor):
     assert x.is_contiguous()  # 确保输入是1D张量
     size = x.numel()
     y = torch.empty_like(x)
-    gridDim = lambda meta: (triton.cdiv(size, meta["BLOCK_SIZE"]),)
+    gridDim = lambda meta: [triton.cdiv(size, meta["BLOCK_SIZE"])]
     kernel_relu[gridDim](x, y, size, BLOCK_SIZE=256)
     return y
 
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     y_triton = triton_relu(x)
     print(y_torch)
     print(y_triton)
-    print(f"Maxdiff is " f"{torch.max(torch.abs(y_torch - y_triton))}")
+    print("Maxdiff is {}".format(torch.max(torch.abs(y_torch - y_triton))))
 ```
 
 ## 程序输出
