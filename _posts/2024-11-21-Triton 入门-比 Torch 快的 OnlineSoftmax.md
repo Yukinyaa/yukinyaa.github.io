@@ -3,7 +3,7 @@ title: Triton 入门-比 Torch 快的 OnlineSoftmax
 tags: 学习笔记与作业
 ---
 
-本文基于 Triton 逐步实现 online-softmax 算子，并与 Torch 的性能进行比较。实验结果显示，我的版本相较于 Torch 稳定快 24%。
+本文基于 Triton 逐步实现 online-softmax 算子，并与 Torch 的性能进行比较。实验结果显示，我的版本相较于 Torch 稳定快 26.1%。
 
 $$
 y_{i,j}=\frac{\exp (x_{i,j}-\max_j\lbrace x_{i,j}\rbrace)}{\max\lbrace\sum_j\exp (x_{i,j}-\max_j\lbrace x_{i,j}\rbrace),\epsilon\rbrace}
