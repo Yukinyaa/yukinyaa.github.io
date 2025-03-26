@@ -27,7 +27,7 @@ $$
 分别实现了三个版本的 softmax：
 
 1. softmax_fuse：每个 block 一次 load 一整列元素，直接算。这样做在 n 较小（`n_col < 65536`） 时 triton 的算子融合方式性能较好，否则性能差。推测过多的寄存器/SMEM占用影响了 occupancy。`n_col > 131072` 时直接无法启动。平均每个元素 1 次 load 1 次 store。
-2. softmax_tile：按照列分tile处理寄存器/SMEM不够处理整列的问题。使用三次循环：第一次算整列的 max，第二次算整列的 sum of exp，第三次逐元素算 softmax。平均每个元素 3 次 load 次store。
+2. softmax_tile：按照列分tile处理寄存器/SMEM不够处理整列的问题。使用三次循环：第一次算整列的 max，第二次算整列的 sum of exp，第三次逐元素算 softmax。平均每个元素 3 次 load 1 次 store 2 次 exp（也可以改成 2 次 store 1 次 exp）。
 3. softmax_online：在 softmax_tile 基础上将前两次 online 算 max 和 sum，这样可以减少 1 次 load 操作。由于 softmax 是访存密集算子，多几次 `exp` 交换也是可以接受的。
 
 尤其值得注意的是 126 行处处理的 `nan` 问题，真的 debug 了很久。
