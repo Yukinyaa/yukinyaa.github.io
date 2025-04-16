@@ -56,7 +56,7 @@ if __name__ == "__main__":
         kernel_relu, signature="*fp32,*fp32,i32", constants={"BLOCK_SIZE": 256}
     )
     for k, v in compiled_relu.asm.items():
-        with open("relu." + k, "wb" if k in ["cubin"] else "w") as f:
+        with open("relu." + k, "wb" if type(v) == bytes else "w") as f:
             f.write(v)
     DEVICE = "cuda"  # triton.runtime.driver.active.get_active_torch_device()
     x = torch.rand(2**20, device=DEVICE)
