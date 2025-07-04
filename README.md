@@ -1,6 +1,5 @@
 # YukiNyaa
 
-
 <!-- .slide -->
 
 ![pfpic](./_resource/PFPic.png)

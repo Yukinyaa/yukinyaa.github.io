@@ -156,13 +156,12 @@ defaults: # Configure all settings using <https://jekyllrb.com/docs/configuratio
             enable: true
         home: # Settings for slide-based homepage — optional, see <https://revealjs.com/>
           ...
-compress_html: # <https://github.com/penibelst/jekyll-compress-html>
-  ...
-  comments: [] # Comments can't be compressed or reveal.js slide transitions may break
+#compress_html: # <https://github.com/penibelst/jekyll-compress-html>
+#    comments: [] # Comments can't be compressed or reveal.js slide transitions may break
 
 # Plugins supported by GitHub Pages: <https://pages.github.com/versions/>
-plugins:
-  ...
+#plugins:
+#  ...
 
 remote_theme: https://github.com/wu-kan/jekyll-theme-WuK@5.4.0 # Use a fixed theme version to prevent layout issues due to updates
 
