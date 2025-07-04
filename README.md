@@ -3,7 +3,7 @@
 
 <!-- .slide -->
 
-![pfpic](./_resource/PFPic.png)
+<!-- ![pfpic](./_resource/PFPic.png)-->
 - Hello
 - Nothing here yet
 - only biboo
