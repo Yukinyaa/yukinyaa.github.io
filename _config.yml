@@ -150,9 +150,8 @@ defaults: # Configure all settings using <https://jekyllrb.com/docs/configuratio
             prepend: require
             unit: min
             divided_by: 300 # Normal reading speed: ~300 words per minute
-          copyright:
-            | # My posts are under the most permissive Creative Commons license: Attribution 4.0 International (CC BY 4.0)
-              ...
+          copyright: |
+            My posts are under the most permissive Creative Commons license: Attribution 4.0 International (CC BY 4.0)
           related_posts:
             enable: true
         home: # Settings for slide-based homepage — optional, see <https://revealjs.com/>
