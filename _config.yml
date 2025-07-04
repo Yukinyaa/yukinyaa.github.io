@@ -36,12 +36,6 @@ defaults: # Configure all settings using <https://jekyllrb.com/docs/configuratio
             nav: # Navigation content — you can add your own links
               - title: 'Index'
                 href: /
-              - title: 'Comments'
-                href: /comments/
-              - title: 'Archive'
-                href: /archive/
-              - title: 'Tags'
-                href: /tags/
               - title: 'GitHub'
                 href: https://github.com/Yukinyaa
               - title: 'X(twitter)'
