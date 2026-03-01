@@ -41,7 +41,11 @@ body {
 .bg-layer {
   background-size: cover;
   background-position: center;
+  transform-origin: center;
+  transform: translate3d(0, 0, 0) scale(1.08);
   transition: opacity 1.4s ease-in-out;
+  will-change: opacity, transform;
+  animation: bg-pan 6.5s linear forwards;
 }
 
 .bg-layer-a {
@@ -124,5 +128,19 @@ p {
   .bg-layer,
   .portal-button {
     transition: none;
+    animation: none;
+    transform: none;
+  }
+}
+
+@keyframes bg-pan {
+  0% {
+    transform: translate3d(var(--pan-start-x, 0), var(--pan-start-y, 0), 0)
+      scale(var(--pan-start-scale, 1.08));
+  }
+
+  100% {
+    transform: translate3d(var(--pan-end-x, 0), var(--pan-end-y, 0), 0)
+      scale(var(--pan-end-scale, 1.14));
   }
 }
