@@ -1,8 +1,17 @@
 const backgroundImages = [
-  "https://github.com/user-attachments/assets/761ec3d0-5ef8-4edd-b596-22c3288be7d8", //루루도 도촬
-  "https://github.com/user-attachments/assets/b55b3a15-9793-4641-b813-fc688e3d5dfb", //강남스타일
-  //"https://github.com/user-attachments/assets/e4008e44-955e-48cf-a4cb-8a6f63729232", //합삐
-  "https://github.com/user-attachments/assets/21e36e30-434b-4851-b2bd-bda30cb6c089", //자전거
+  "https://github.com/user-attachments/assets/5222b6dd-5ee1-42d4-bf89-da9e7632ac70",
+  "https://github.com/user-attachments/assets/c06357a1-5e7c-4d7f-80b8-490c49019f5f",
+  "https://github.com/user-attachments/assets/d40303c8-bde0-4236-97d6-ef66505c8daa",
+  "https://github.com/user-attachments/assets/3db4b249-fe7b-420c-8ac1-0bff82c46e2c",
+  "https://github.com/user-attachments/assets/86e5391b-fe04-4b40-8ca9-b8a826b4d5b4",
+  "https://github.com/user-attachments/assets/51b1cdf8-8f5c-4573-8b07-d0cf415532d2",
+  "https://github.com/user-attachments/assets/cefaad36-4162-4f81-9062-043d1fc64834",
+  "https://github.com/user-attachments/assets/9f8cf7b8-239b-4068-8d06-94d02b7e1003",
+  "https://github.com/user-attachments/assets/7034f156-28ff-4adb-975f-9c954d1e18fd",
+  "https://github.com/user-attachments/assets/45c1f19a-1f0a-4107-a891-6ed49108f1fd",
+  "https://github.com/user-attachments/assets/2a7f0373-824d-4153-94aa-03c58adcfcec",
+  "https://github.com/user-attachments/assets/376b15fa-f0af-41e1-a751-35dd6e9901c3",
+  "https://github.com/user-attachments/assets/96d59e1d-25ce-41fa-a890-124b099a2c8a",
 ];
 
 const layerA = document.querySelector(".bg-layer-a");
